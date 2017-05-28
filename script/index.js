@@ -43,14 +43,17 @@ function onclickCart(){
 function refresh_item_table(){
 	$("#resultTable_stock div").remove();
 	$("#resultTable_nostock div").remove();
+
+	//src="${item[i]["image_src"]}"
 	for(var i=0;i<item.length;i++) {
 
 		var product_page_url = "product_page.html?item_id=" + item[i]["item_id"];
+		console.log(item[i]);
 
 		if (item[i]["seller_num"] > 0){
 			$("#resultTable_stock").append(
 				`<div class="col-lg-3">
-					<img class="img-circle" src="${item[i]["image_src"]}" alt="Generic placeholder image" width="140" height="140">
+					<img class="img-circle" src=${item[i]['image_src']} alt="Generic placeholder image" width="140" height="140">
 					<h2>${item[i]["item_name"]}</h2>
 					<p>Lowest Price : $ ${item[i]["min_price"]}</p>
 					<p><a class="btn btn-default" href=${product_page_url} role="button">View details &raquo;</a></p>
@@ -87,6 +90,7 @@ function searchItem (search_input){
 	    	if(single_val["item_name"].includes(search_input)){
 	    		item.unshift({"item_id":single_val["item_id"],
 	    						"item_name":single_val["item_name"],
+	    						"image_src":single_val["image_src"],
 	    						"seller_num":single_val["seller_num"],
 	    						"requst_num":single_val["requst_num"],
 	    						"description":single_val["description"],
@@ -117,6 +121,7 @@ function searchItemID (item_id){
 	    	if(single_val["item_id"] == item_id){
 	    		item.unshift({"item_id":single_val["item_id"],
 	    						"item_name":single_val["item_name"],
+	    						"image_src":single_val["image_src"],
 	    						"seller_num":single_val["seller_num"],
 	    						"requst_num":single_val["requst_num"],
 	    						"description":single_val["description"],

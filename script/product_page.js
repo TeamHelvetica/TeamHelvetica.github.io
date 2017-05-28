@@ -34,7 +34,7 @@ itemRef.on("value", function(snapshot) {
 								requst_num: data.request_num,
 								description: data.description,
 								min_price: data.min_price,
-
+								image_src: data.image_src
 							}
 
 				
@@ -43,6 +43,8 @@ itemRef.on("value", function(snapshot) {
 			
 			
 		})
+
+		//console.log(item[0]);
 		$("#contents_table").append(`
                     <img class="img-circle" src=${item[0]["image_src"]} alt="Generic placeholder image" width="800" height="300">
                     <div class="caption-full">
