@@ -3,6 +3,12 @@ var config = {
   databaseURL: "https://hevetica-e4d31.firebaseio.com/"
 }
 
+Geocoder.configure(
+    :timeout => 15,
+    :api_key => "AIzaSyAqbt-WXCdum0_Hfxh4tWSUOOYDHROswdE",
+    :use_https => true
+)
+
 firebase.initializeApp(config);
 var database = firebase.database();
 var userRef = database.ref("user")
