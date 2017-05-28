@@ -25,7 +25,7 @@ function onclickSearch(){
 		if (search_input != ""){
 			//console.log(search_input);
 			searchItem(search_input);
-			//searchTag(search_input);
+			searchTag(search_input);
 		}else {
 			console.log("search nothing");
 			//not implemented
@@ -114,6 +114,14 @@ function searchTag (search_input){
 }
 
 function searchItemID (item_id){
+	for(var i=0;i<item.length;i++) {
+		if(item[i]["item_id"] == item_id){
+			//console.log("must be null");
+			return null;
+		}
+	}
+
+
 	itemRef.once("value", function(snapshot) {
 	  	snapshot.forEach(function(child) {
 	    	var single_val = child.val();
@@ -137,7 +145,7 @@ function enterListner(e) {
 		if (search_input != ""){
 	        var search_input = $('#search_input').val();
 			searchItem(search_input);
-			//searchTag(search_input);
+			searchTag(search_input);
 			return true;
 		}else {
 			console.log("search nothing");
