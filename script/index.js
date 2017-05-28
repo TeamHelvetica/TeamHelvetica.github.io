@@ -137,7 +137,7 @@ function enterListner(e) {
 		if (search_input != ""){
 	        var search_input = $('#search_input').val();
 			searchItem(search_input);
-			searchTag(search_input);
+			//searchTag(search_input);
 			return true;
 		}else {
 			console.log("search nothing");
