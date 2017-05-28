@@ -25,7 +25,7 @@ function onclickSearch(){
 		if (search_input != ""){
 			//console.log(search_input);
 			searchItem(search_input);
-			searchTag(search_input);
+			//searchTag(search_input);
 		}else {
 			console.log("search nothing");
 			//not implemented
