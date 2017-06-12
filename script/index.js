@@ -1,3 +1,15 @@
+function getParams(){
+	var url = unescape(location.href); 
+	var paramArr = (url.substring(url.indexOf("?")+1,url.length)).split("&");
+	var paramDic = {};
+
+	for(var i = 0 ; i < paramArr.length ; i++){
+		var temp = paramArr[i].split("="); //파라미터 변수명을 담음
+		paramDic[temp[0]] = temp[1];
+	}
+	return paramDic;
+}
+
 //Global Variable : static
 var firebase_url = "https://hevetica-e4d31.firebaseio.com/";
 var firebase_api_key = "AIzaSyAqbt-WXCdum0_Hfxh4tWSUOOYDHROswdE";
@@ -15,6 +27,7 @@ var userRef = database.ref("user");
 
 //Global Variable : dynamic
 var item = [];
+//params = getParams();
 
 //functions
 function onclickSearch(){
@@ -27,7 +40,7 @@ function onclickSearch(){
 			searchItem(search_input);
 			searchTag(search_input);
 		}else {
-			console.log("search nothing");
+			//console.log("search nothing");
 			//not implemented
 			//window.open('.html','1494164703883','width=300,height=200,toolbar=0,menubar=0,location=0,status=0,scrollbars=0,resizable=1,left=0,top=0');
 		}
@@ -48,7 +61,7 @@ function refresh_item_table(){
 	for(var i=0;i<item.length;i++) {
 
 		var product_page_url = "product_page.html?item_id=" + item[i]["item_id"];
-		console.log(item[i]);
+		//console.log(item[i]);
 
 		if (item[i]["seller_num"] > 0){
 			$("#resultTable_stock").append(
@@ -87,7 +100,7 @@ function searchItem (search_input){
 	  	snapshot.forEach(function(child) {
 	    	var single_val = child.val();
 	    	//console.log(single_val);
-	    	if(single_val["item_name"].includes(search_input)){
+	    	if(single_val["item_name"].toUpperCase().includes(search_input.toUpperCase())){
 	    		item.unshift({"item_id":single_val["item_id"],
 	    						"item_name":single_val["item_name"],
 	    						"image_src":single_val["image_src"],
@@ -105,7 +118,7 @@ function searchTag (search_input){
 	itemTagRef.once("value", function(snapshot){
 		snapshot.forEach(function(child) {
 	    	var single_val = child.val();
-	    	if (single_val["item_tag"].includes(search_input)) {
+	    	if (single_val["item_tag"].toUpperCase().includes(search_input.toUpperCase())) {
 	    		//console.log("comes here?");
 	    		searchItemID(single_val["item_id"]);
 	    	};
@@ -155,64 +168,6 @@ function enterListner(e) {
     }
 }
 
-function tempPush(){
-	/*itemNumRef.once("value").then(function(snapshot) {
-		var item_id = snapshot.val();
-
-		database.ref("item/" + item_id).set({
-			"item_id":item_id,
-			"item_name":"nimbus 9000",
-			"image_src":"https://cdn2.iconfinder.com/data/icons/social-media-8/512/bell.png",
-			"seller_num":1,
-			"requst_num":0,
-			"description":"nothing in mind",
-			"min_price":100.0
-		});
-		itemNumRef.set(item_id+1);
-	});
-
-	
-	itemTagRef.push({
-		"item_id":0,
-		"item_tag":"baseballbat"
-	});
-
-	itemSellerRef.push({
-		"item_id":0,
-		"user_id":0,
-		"price":"100.0"
-	});
-
-	userRef.push({
-		"user_id":"0",
-		"user_name":"Eojin Rho"
-	});*/
-
-	/*itemNumRef.once("value").then(function(snapshot) {
-		var item_id = snapshot.val();
-
-		database.ref("item/" + item_id).set({
-			"item_id":item_id,
-			"item_name":"exo bat",
-			"image_src":"https://cdn2.iconfinder.com/data/icons/social-media-8/512/bell.png",
-			"seller_num":0,
-			"requst_num":0,
-			"description":"what's diff?",
-			"min_price":300.0
-		});
-		itemNumRef.set(item_id+1);
-	});
-
-	
-	itemTagRef.push({
-		"item_id":1,
-		"item_tag":"baseballbat"
-	});*/
-}
-
-
 //Main
-
 onclickSearch();
 onclickCart();
-tempPush();
