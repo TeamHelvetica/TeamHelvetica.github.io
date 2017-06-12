@@ -1,18 +1,3 @@
-//Global Variable : static
-var firebase_url = "https://hevetica-e4d31.firebaseio.com/";
-var firebase_api_key = "AIzaSyAqbt-WXCdum0_Hfxh4tWSUOOYDHROswdE";
-var firebase_config = {
-  apiKey: firebase_api_key,
-  databaseURL: firebase_url
-};
-firebase.initializeApp(firebase_config);
-var database = firebase.database();
-var userRef = database.ref("user");
-
-//Global Variable : dynamic
-
-//Functions
-
 $(function() {
     $('#login-form-link').click(function(e) {
 		$(".login-form").delay(100).fadeIn(100);
@@ -29,6 +14,23 @@ $(function() {
 		e.preventDefault();
 	});
 });
+
+//Global Variable : static
+var firebase_url = "https://hevetica-e4d31.firebaseio.com/";
+var firebase_api_key = "AIzaSyAqbt-WXCdum0_Hfxh4tWSUOOYDHROswdE";
+var firebase_config = {
+  apiKey: firebase_api_key,
+  databaseURL: firebase_url
+};
+firebase.initializeApp(firebase_config);
+var database = firebase.database();
+var userRef = database.ref("user");
+
+//Global Variable : dynamic
+
+//Functions
+
+
 
 function onclickLogin(){
 	$('#login-submit').click(function() {
@@ -126,8 +128,6 @@ function onclickRegister(){
 		});
     });
 }
-
-function
 
 onclickLogin();
 onclickRegister();
