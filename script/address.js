@@ -245,34 +245,34 @@ function geocodeLatLng(geocoder, map, infowindow, input) {
 		  curr_formatted_address = results[0].formatted_address;
 		  infowindow.setContent(results[0].formatted_address);
 		  var address = results[0].formatted_address.split(", ");
-		  //len = results[0].address_components.length;
+		  len = results[0].address_components.length;
 		  console.log(address);
+		  var country = "";
 		  //console.log(results[0].address_components
-			/*for (var i=0; i<len; i++) {
-				console.log(results[0].address_components[i].types);
-				console.log(results[0].address_components[i].types.indexOf("country"));
+			for (var i=0; i<len; i++) {
+				//console.log(results[0].address_components[i].types);
+				//console.log(results[0].address_components[i].types.indexOf("country"));
 				if (results[0].address_components[i].types.indexOf("country") != -1) {
-					document.getElementById("country").value = results[0].address_components[i].long_name
+					country = results[0].address_components[i].long_name;
+					console.log("country name : " + country);
 				}
-				if (results[0].address_components[i].types.indexOf("locality") != -1) {
-					document.getElementById("state").value = results[0].address_components[i].long_name
-				}
-				if (results[0].address_components[i].types.indexOf("sublocality_level_1") != -1) {
-					document.getElementById("city").value = results[0].address_components[i].long_name
-				}
-				if (results[0].address_components[i].types.indexOf("sublocality_level_2") != -1) {
-					document.getElementById("addr1").value = results[0].address_components[i].long_name
-				}
-				if (results[0].address_components[i].types.indexOf("postal_code") != -1) {
-					document.getElementById("zip").value = results[0].address_components[i].long_name
-				}
-			}*/
-		  
-		  document.getElementById("country").value = address[3]
-		  document.getElementById("city").value = address[2]
-		  document.getElementById("state").value = address[1]
-		  document.getElementById("zip").value = results[0].address_components[5].long_name
-		  document.getElementById("addr1").value = address[0]
+			}
+
+		  	if(address[3] == country){
+		  		console.log("orientation opp");
+				document.getElementById("country").value = address[3];
+				document.getElementById("city").value = address[2];
+				document.getElementById("state").value = address[1];
+				document.getElementById("zip").value = results[0].address_components[5].long_name;
+				document.getElementById("addr1").value = address[0];
+			}else{
+				console.log("orientation cor");
+				document.getElementById("country").value = address[0];
+				document.getElementById("city").value = address[1];
+				document.getElementById("state").value = address[2];
+				document.getElementById("zip").value = results[0].address_components[5].long_name;
+				document.getElementById("addr1").value = address[3];
+			}
 		  //document.getElementById("addr2").value = address[4]
 
 
