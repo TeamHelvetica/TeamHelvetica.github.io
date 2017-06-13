@@ -1,6 +1,9 @@
 # TeamHelvetica.github.io
 HCI:CS374
 
+# Before the beginning
+Please, download or pull the whole files from the github and run index.html. Because, our project uses Google Map API and Google Map API key doesn't work for github.io. Most of functionality works, but "search location in any language" function doesn't work in github.io, which is important part of our project. So, to have full experience of the project, please download files from github.
+
 # How to use
 start with index.html
 At the begining there is only search result of baseballbat, so try to search with 'baseball' 'bat' or 'baseballbat'
